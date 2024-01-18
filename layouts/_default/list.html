@@ -86,9 +86,6 @@
   {{- if not (.Param "hideMeta") }}
   <footer class="entry-footer">
     {{- partial "post_meta.html" . -}}
-  </footer>
-  <footer class="entry-footer">
-    {{- partial "post_meta.html" . -}}
 
     <!--添加封面 -->
     {{ with index .Page.Params "blog_cover" }}
