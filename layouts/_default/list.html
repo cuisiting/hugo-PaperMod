@@ -55,7 +55,6 @@
 {{- range $index, $page := $paginator.Pages }}
 
 {{- $class := "post-entry" }}
-
 {{- $user_preferred := or site.Params.disableSpecial1stPost site.Params.homeInfoParams }}
 {{- if (and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) (not $user_preferred)) }}
 {{- $class = "first-entry" }}
@@ -87,6 +86,16 @@
   {{- if not (.Param "hideMeta") }}
   <footer class="entry-footer">
     {{- partial "post_meta.html" . -}}
+  </footer>
+  <footer class="entry-footer">
+    {{- partial "post_meta.html" . -}}
+
+    <!--添加封面 -->
+    {{ with index .Page.Params "blog_cover" }}
+      {{ with index . 0 }}
+        <img src="{{ . | absURL }}" alt="First Image" />
+      {{ end }}
+    {{ end }}
   </footer>
   {{- end }}
   <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
