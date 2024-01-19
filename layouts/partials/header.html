@@ -38,8 +38,27 @@
 
 </script>
 {{- end }}
+{{- partial "terms.html" . }}
+
+<ul class="terms-tags">
+    <pre>layout _default</pre>
+
+    {{- $type := .Type }}
+    {{- range $key, $value := .Data.Terms.Alphabetical }}
+    {{- $name := .Name }}
+    {{- $count := .Count }}
+    {{- with site.GetPage (printf "/%s/%s" $type $name) }}
+    <li>
+        <a href="{{ .Permalink }}">{{ .Name }} <sup><strong><sup>{{ $count }}</sup></strong></sup> </a>
+    </li>
+    {{- end }}
+    {{- end }}
+</ul>
 
 <header class="header">
+
+<pre>Header</pre>
+{{- partial "terms.html" . }}
     <nav class="nav">
         <div class="logo">
             {{- $label_text := (site.Params.label.text | default site.Title) }}
