@@ -1,0 +1,11 @@
+
+<div class="sidebar-section">
+    <h3>标签</h3>
+    {{ range $tagName, $tagPages := .Site.Taxonomies.tags }}
+    <ul>
+        <a href="{{ "tags/" | relLangURL }}{{ $tagName | urlize }}">{{ $tagName }}</a>
+    </ul>
+
+{{ end }}
+
+</div>
